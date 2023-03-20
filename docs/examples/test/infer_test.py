@@ -1,6 +1,7 @@
 import requests
 import argparse
 import logging
+import json
 
 logger = logging.getLogger()
 
@@ -33,5 +34,11 @@ if __name__ == "__main__":
         "outputs": [{"name": "output__0"}, {"name": "output__1"}]
     }
 
-    res = requests.post(url="http://localhost:8000/v2/models/fc_model_pt/versions/1/infer", json=request_data).json()
-    print(res)
+    response = requests.post(url="http://localhost:8000/v2/models/fc_model_pt/versions/1/infer", json=request_data).json()
+
+    if response.status_code == 200:
+        logger.info("status_code: {}, response: {}".format(response.status_code, response))
+        r_text = json.loads(response.text)
+        logger.info("text: {}".format(response.text))
+    else:
+        logger.error("status_code: {}, response: {}".format(response.status_code, response))
