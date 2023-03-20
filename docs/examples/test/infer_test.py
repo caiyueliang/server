@@ -38,13 +38,13 @@ if __name__ == "__main__":
         "inputs": [
             {
                 "name": "INPUT0",
-                "shape": [16],
+                "shape": [1, 16],
                 "datatype": "INT32",
                 "data": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
             },
             {
                 "name": "INPUT1",
-                "shape": [16],
+                "shape": [1, 16],
                 "datatype": "INT32",
                 "data": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
             }
