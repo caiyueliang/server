@@ -4,7 +4,7 @@ import logging
 import json
 
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 
 def parse_argvs():
