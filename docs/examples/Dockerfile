@@ -14,4 +14,4 @@ COPY ./model_repository /models
 #WORKDIR /home/server
 
 ## CMD ["python", "run.py"]
-#CMD ["bash", "./bin/entrypoint.sh"]
+CMD ["tritonserver", "--model-repository=/models"]
