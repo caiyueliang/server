@@ -16,7 +16,7 @@ def parse_argvs():
                         default="https://aigc.wair.ac.cn")
 
     args = parser.parse_args()
-    logger.info('[args] {}'.format(args))
+    logger.warning('[args] {}'.format(args))
 
     return parser, args
 
@@ -36,11 +36,11 @@ if __name__ == "__main__":
     }
 
     response = requests.post(url="http://localhost:8000/v2/models/fc_model_pt/versions/1/infer", json=request_data)
-    logger.info("response: {}, dict: {}".format(response, response.__dict__))
+    logger.warning("response: {}, dict: {}".format(response, response.__dict__))
 
     if response.status_code == 200:
-        logger.info("status_code: {}, response: {}".format(response.status_code, response))
+        logger.warning("status_code: {}, response: {}".format(response.status_code, response))
         r_text = json.loads(response.text)
-        logger.info("text: {}".format(response.text))
+        logger.warning("text: {}".format(response.text))
     else:
         logger.error("status_code: {}, response: {}".format(response.status_code, response))
