@@ -7,7 +7,7 @@ if __name__ == "__main__":
             "name": "input__0",
             "shape": [2, 3],
             "datatype": "INT64",
-            "data": [[1, 2, 3],[4,5,6]]
+            "data": [[1, 2, 3], [4, 5, 6]]
         }],
         "outputs": [{"name": "output__0"}, {"name": "output__1"}]
     }
