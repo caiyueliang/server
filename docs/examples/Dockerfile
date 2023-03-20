@@ -1,4 +1,5 @@
-FROM nvcr.io/nvidia/tritonserver:23.02-py3
+# FROM nvcr.io/nvidia/tritonserver:23.02-py3
+FROM nvcr.io/nvidia/tritonserver:21.12-py3
 
 # USER root
 
