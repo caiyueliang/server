@@ -35,6 +35,7 @@ if __name__ == "__main__":
     }
 
     response = requests.post(url="http://localhost:8000/v2/models/fc_model_pt/versions/1/infer", json=request_data).json()
+    logger.info("response: {}, dict: {}".format(response, response.__dict__))
 
     if response.status_code == 200:
         logger.info("status_code: {}, response: {}".format(response.status_code, response))
