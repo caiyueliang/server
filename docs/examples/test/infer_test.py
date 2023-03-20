@@ -23,7 +23,7 @@ def parse_argvs():
 
 if __name__ == "__main__":
     parser, args = parse_argvs()
-    logger.warning("[main] server_address: {}".format(args.server_address))
+    # logger.warning("[main] server_address: {}".format(args.server_address))
 
     # request_data = {
     #     "inputs": [{
