@@ -37,19 +37,19 @@ if __name__ == "__main__":
     request_data = {
         "inputs": [
             {
-                "name": "input0",
+                "name": "INPUT0",
                 "shape": [16],
                 "datatype": "INT32",
                 "data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]]
             },
             {
-                "name": "input1",
+                "name": "INPUT1",
                 "shape": [16],
                 "datatype": "INT32",
                 "data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]]
             }
         ],
-        "outputs": [{"name": "output0"}, {"name": "output1"}]
+        "outputs": [{"name": "OUTPUT0"}, {"name": "OUTPUT1"}]
     }
 
     response = requests.post(url=args.url, json=request_data)
