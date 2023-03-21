@@ -7,3 +7,4 @@ docs/examples/model_repository/
 docs/.DS_Store
 .idea/
 __pycache__/
+.DS_Store
