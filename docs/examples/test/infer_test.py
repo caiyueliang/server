@@ -2,9 +2,59 @@ import requests
 import argparse
 import logging
 import json
+import numpy as np
+from PIL import Image
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
+
+
+def get_densenet_onnx_data(image_path, new_size=(224, 224)):
+    im = Image.open(fp=image_path)
+    logger.warning("[get_densenet_onnx_data] im.size: {}".format(im.size))
+    out = im.resize(new_size, Image.ANTIALIAS)
+    logger.warning("[get_densenet_onnx_data] out.size: {}".format(out.size))
+
+    out_arr = np.array(out)
+    logger.warning("[get_densenet_onnx_data] out_arr.shape: {}".format(out_arr.shape))
+
+    request_data = {
+        "inputs": [
+            {
+                "name": "input",
+                "shape": [1, 16],
+                "datatype": "FP32",
+                "data": [out_arr]
+            }
+        ],
+        "outputs": [{"name": "OUTPUT0"}, {"name": "OUTPUT1"}]
+    }
+
+    return request_data
+
+
+def get_inception_graphdef_data(image_path, new_size=(299, 299)):
+    im = Image.open(fp=image_path)
+    logger.warning("[get_inception_graphdef_data] im.size: {}".format(im.size))
+    out = im.resize(new_size, Image.ANTIALIAS)
+    logger.warning("[get_inception_graphdef_data] out.size: {}".format(out.size))
+
+    out_arr = np.array(out)
+    logger.warning("[get_inception_graphdef_data] out_arr.shape: {}".format(out_arr.shape))
+
+    request_data = {
+        "inputs": [
+            {
+                "name": "input",
+                "shape": [1, 299, 299, 3],
+                "datatype": "FP32",
+                "data": [out_arr]
+            }
+        ],
+        "outputs": [{"name": "InceptionV3/Predictions/Softmax"}]
+    }
+
+    return request_data
 
 
 def parse_argvs():
@@ -16,8 +66,7 @@ def parse_argvs():
     parser.add_argument("--host", type=str, default="http://localhost:8000")
     parser.add_argument("--model", type=str, default="simple")
     parser.add_argument("--version", type=str, default="1")
-
-
+    parser.add_argument("--image_path", type=str, default="./data/images/1.jpeg")
 
     args = parser.parse_args()
     logger.warning('[args] {}'.format(args))
@@ -51,6 +100,10 @@ if __name__ == "__main__":
             ],
             "outputs": [{"name": "OUTPUT0"}, {"name": "OUTPUT1"}]
         }
+    elif args.model == "densenet_onnx":
+        request_data = get_densenet_onnx_data(image_path=args.image_path)
+    elif args.model == "inception_graphdef":
+        request_data = get_inception_graphdef_data(image_path=args.image_path)
     elif args.model == "simple_identity":
         request_data = {
             "inputs": [
