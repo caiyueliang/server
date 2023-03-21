@@ -42,13 +42,15 @@ def get_inception_graphdef_data(image_path, new_size=(299, 299)):
     out_arr = np.array(out)
     logger.warning("[get_inception_graphdef_data] out_arr.shape: {}".format(out_arr.shape))
 
+    logger.warning(out_arr)
+
     request_data = {
         "inputs": [
             {
                 "name": "input",
                 "shape": [1, 299, 299, 3],
                 "datatype": "FP32",
-                "data": [out_arr]
+                "data": [out_arr.tolist()]
             }
         ],
         "outputs": [{"name": "InceptionV3/Predictions/Softmax"}]
