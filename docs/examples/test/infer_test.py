@@ -21,13 +21,13 @@ def get_densenet_onnx_data(image_path, new_size=(224, 224)):
     request_data = {
         "inputs": [
             {
-                "name": "input",
-                "shape": [1, 16],
+                "name": "data_0",
+                "shape": [3, 224, 224],
                 "datatype": "FP32",
-                "data": [out_arr]
+                "data": out_arr.tolist()
             }
         ],
-        "outputs": [{"name": "OUTPUT0"}, {"name": "OUTPUT1"}]
+        "outputs": [{"name": "fc6_1"}]
     }
 
     return request_data
@@ -42,7 +42,7 @@ def get_inception_graphdef_data(image_path, new_size=(299, 299)):
     out_arr = np.array(out)
     logger.warning("[get_inception_graphdef_data] out_arr.shape: {}".format(out_arr.shape))
 
-    logger.warning(out_arr)
+    # logger.warning(out_arr)
 
     request_data = {
         "inputs": [
