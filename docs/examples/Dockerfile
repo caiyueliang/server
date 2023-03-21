@@ -15,4 +15,4 @@ COPY ./model_repository /models
 #WORKDIR /home/server
 
 ## CMD ["python", "run.py"]
-CMD ["tritonserver", "--model-repository=/models"]
+CMD ["tritonserver", "--http-port=8080", "--model-repository=/models"]
