@@ -51,6 +51,18 @@ if __name__ == "__main__":
             ],
             "outputs": [{"name": "OUTPUT0"}, {"name": "OUTPUT1"}]
         }
+    elif args.model == "simple_identity":
+        request_data = {
+            "inputs": [
+                {
+                    "name": "INPUT0",
+                    "shape": [1, 2],
+                    "datatype": "BYTES",
+                    "data": ["Hello", "WORLD"]
+                }
+            ],
+            "outputs": [{"name": "OUTPUT0"}]
+        }
     else:
         request_data = {
             "inputs": [{
