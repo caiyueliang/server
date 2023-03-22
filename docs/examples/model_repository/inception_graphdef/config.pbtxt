@@ -1,6 +1,6 @@
 name: "inception_graphdef"
 platform: "tensorflow_graphdef"
-max_batch_size: 128
+max_batch_size: 64
 input [
   {
     name: "input"
@@ -16,4 +16,19 @@ output [
     dims: [ 1001 ]
     label_filename: "inception_labels.txt"
   }
+]
+
+#instance_group [
+#    {
+#        count: 2
+#        kind: KIND_CPU
+#    }
+#]
+
+instance_group [
+    {
+        count: 2
+        kind: KIND_GPU
+        gpus: [ 0 ]
+    }
 ]

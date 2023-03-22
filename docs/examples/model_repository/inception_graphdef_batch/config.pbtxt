@@ -1,6 +1,6 @@
 name: "inception_graphdef_batch"
 platform: "tensorflow_graphdef"
-max_batch_size: 128
+max_batch_size: 64
 input [
   {
     name: "input"
@@ -25,9 +25,16 @@ output [
 #    }
 #]
 
+instance_group [
+    {
+        count: 2
+        kind: KIND_GPU
+        gpus: [ 0 ]
+    }
+]
 
 dynamic_batching {
-    preferred_batch_size: [ 32, 128 ]
+    preferred_batch_size: [ 32, 64 ]
     max_queue_delay_microseconds: 100
 }
 
