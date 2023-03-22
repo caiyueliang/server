@@ -2,12 +2,6 @@ name: "densenet_onnx_batch"
 platform: "onnxruntime_onnx"
 max_batch_size : 0
 
-instance_group [
-    {
-        count: 2
-        kind: KIND_CPU
-    }
-]
 
 input [
   {
@@ -28,3 +22,8 @@ output [
     label_filename: "densenet_labels.txt"
   }
 ]
+
+dynamic_batching {
+    preferred_batch_size: [ 4, 8 ]
+    max_queue_delay_microseconds: 100
+ }
