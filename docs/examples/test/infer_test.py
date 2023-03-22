@@ -2,11 +2,13 @@ import requests
 import argparse
 import logging
 import json
+import time
 import numpy as np
 from PIL import Image
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
+
 
 
 def get_densenet_onnx_data(image_path, new_size=(224, 224)):
@@ -64,7 +66,6 @@ def parse_argvs():
     parser.add_argument("--processes", help="processes num", type=int, default=1)
     parser.add_argument("--threads", help="threads num", type=int, default=1)
     parser.add_argument("--times", help="test times", type=int, default=1)
-    # parser.add_argument("--url", type=str, default="http://localhost:8000/v2/models/fc_model_pt/versions/1/infer")
     parser.add_argument("--host", type=str, default="http://localhost:8000")
     parser.add_argument("--model", type=str, default="simple")
     parser.add_argument("--version", type=str, default="1")
@@ -78,7 +79,6 @@ def parse_argvs():
 
 if __name__ == "__main__":
     parser, args = parse_argvs()
-    # logger.warning("[main] server_address: {}".format(args.server_address))
     # http://localhost:8000/v2/models/simple/versions/1/infer
     base_url = "{}/v2/models/{}/versions/{}/infer"
     url = base_url.format(args.host, args.model, args.version)
