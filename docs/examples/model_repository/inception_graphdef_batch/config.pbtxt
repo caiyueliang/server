@@ -17,3 +17,9 @@ output [
     label_filename: "inception_labels.txt"
   }
 ]
+
+dynamic_batching {
+    preferred_batch_size: [ 4, 8 ]
+    max_queue_delay_microseconds: 100
+}
+
