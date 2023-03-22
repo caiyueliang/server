@@ -1,4 +1,4 @@
-name: "densenet_onnx"
+name: "densenet_onnx_batch"
 platform: "onnxruntime_onnx"
 max_batch_size : 8
 input [
