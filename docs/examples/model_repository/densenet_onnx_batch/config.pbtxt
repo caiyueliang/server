@@ -1,6 +1,6 @@
 name: "densenet_onnx_batch"
 platform: "onnxruntime_onnx"
-max_batch_size : 8
+max_batch_size : 0
 
 input [
   {
@@ -22,12 +22,3 @@ output [
   }
 ]
 
-dynamic_batching { }
-
-dynamic_batching {
-    preferred_batch_size: [ 4, 8 ]
-  }
-
-dynamic_batching {
-    max_queue_delay_microseconds: 100
-}
