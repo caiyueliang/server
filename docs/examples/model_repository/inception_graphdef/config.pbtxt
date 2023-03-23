@@ -1,6 +1,6 @@
 name: "inception_graphdef"
 platform: "tensorflow_graphdef"
-max_batch_size: 32
+max_batch_size: 1
 input [
   {
     name: "input"
