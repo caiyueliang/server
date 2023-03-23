@@ -11,6 +11,8 @@ FROM nvcr.io/nvidia/tritonserver:21.12-py3
 #COPY ./app /home/server/app
 #COPY ./babel /home/server/babel
 COPY ./model_repository /models
+COPY ./data /triton/data
+COPY ./req_data /triton/req_data
 
 #WORKDIR /home/server
 
