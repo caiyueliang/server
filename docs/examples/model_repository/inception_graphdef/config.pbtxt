@@ -1,6 +1,6 @@
 name: "inception_graphdef"
 platform: "tensorflow_graphdef"
-max_batch_size: 64
+max_batch_size: 32
 input [
   {
     name: "input"
@@ -27,7 +27,7 @@ output [
 
 instance_group [
     {
-        count: 1
+        count: 2
         kind: KIND_GPU
         gpus: [ 0 ]
     }
