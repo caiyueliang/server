@@ -29,6 +29,7 @@ platform: "tensorflow_graphdef"
 max_batch_size: 1
 sequence_batching {
   max_sequence_idle_microseconds: 10000
+  direct { }
   control_input [
     {
       name: "START"
