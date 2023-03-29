@@ -1,4 +1,4 @@
-name: "inception_graphdef_batch"
+name: "inception_graphdef_batch_two"
 platform: "tensorflow_graphdef"
 max_batch_size: 64
 input [
@@ -18,11 +18,11 @@ output [
   }
 ]
 
-#instance_group [
-#    {
-#        count: 2
-#    }
-#]
+instance_group [
+    {
+        count: 2
+    }
+]
 
 #instance_group [
 #    {
